@@ -1,0 +1,24 @@
+<center><h1> Tạo bài review </h1></center>
+<div class = "formpost">
+	<%= form_for @post, url: admin_posts_path do |f| %>
+			<div >
+				<p >
+					<%= f.text_field :title,placeholder: "Title" ,class: "form-control" %>
+				</p>
+				<p>
+					<%= f.cktext_area :content, placeholder: "Compose new micropost..." %>
+				</p>
+				<span class="image">
+					<%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+				</span>	
+				<p class = "submitpost">
+					<%= f.submit "Post", class: "btn btn-primary" %>	
+				</p>
+			</div>
+	<% end %>	
+</div>
+
+
+
+
+

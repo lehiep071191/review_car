@@ -3,4 +3,3 @@ $("#micropost_image").bind("change", function() {
 	if (size_in_megabytes > 10) {
 		alert("Maximum file size is 10MB. Please choose a smaller file.");
 	}
-});
