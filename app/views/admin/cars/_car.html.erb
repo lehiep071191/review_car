@@ -1,0 +1,34 @@
+ <tr>	
+ 	<td class = "tableuser">
+ 		<h3 class= "mtop">
+			<%= car.type_car %>
+		</h3>	
+	</td>
+	<td class = "tablecheck">
+		<h3 class= "mtop">
+			<%= car.name %>
+		</h3>	
+	</td>
+	<td class = "tablecheck">
+		<h3 class= "mtop">
+			<%= car.color %>
+		</h3>	
+	</td>
+	<td class = "tablecheck">
+		<h3 class= "mtop">
+			<%= car.brand %>
+		</h3>	
+	</td>
+	<td >
+		Khởi tạo <%= time_ago_in_words(car.created_at) %> trước.
+	</td>
+		
+	<td class = "tablesee" >	
+		<%= link_to "edit",edit_admin_car_path(car) %>
+	</td>
+	<td class = "tablesee">
+					<%= link_to "delete", admin_car_path(car), method: :delete,data: { confirm: "You sure?" } %>
+	</td>
+
+		
+ </tr>	
