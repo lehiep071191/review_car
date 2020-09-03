@@ -6,12 +6,14 @@ module UsersHelper
 		image_tag(gravatar_url, alt: user.name, class: "gravatar")
 	end
 		def check_gender(user)
+
 			if @user.gender == 0
 				 "Giới tính: Ẩn"
 			elsif @user.gender == 1
 				 "Giới tính: Nam"	
 			elsif @user.gender == 2
 				 "Giới tính: Nữ"	
+
 		end	
 	end
 

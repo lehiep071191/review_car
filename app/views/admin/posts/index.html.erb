@@ -1,0 +1,12 @@
+<% provide(:title, 'All posts') %>
+<h1>All posts</h1>
+<p>
+	<%= link_to "tạo bài viết mới", new_admin_post_path %>
+</p>
+
+<ul class="posts">	
+		<%= render @posts %>	
+</ul>
+
+
+

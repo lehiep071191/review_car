@@ -1,0 +1,30 @@
+<% provide(:title, @post.content) %>
+<span class="user"><%= link_to @post.user.name, @post.user %></span>
+<div class="row">
+	<aside class="col-md-4">
+		<section>
+			<h1>
+				<%= @post.title %>
+			</h1>
+			<h1>
+				<%= image_tag @post.display_image if @post.image.attached? %>
+			</h1>
+			<h4>
+				<%= @post.content.html_safe %>
+			</h4>
+			
+		</section>
+		
+
+	</aside>
+	<div class="col-md-8">
+		<% if @post.comments.any? %>
+			<h3>comment</h3>
+			(<%= @post.comments.count %>)
+			<ol class="microposts">
+				<%= render @comments %>
+			</ol>
+			<%= will_paginate @comments %>
+		<% end %>	
+	</div>
+</div>
