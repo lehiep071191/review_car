@@ -3,6 +3,7 @@
 <div class="row">
 	<aside class="col-md-4">
 		<section>
+		
 			<h1>
 				<%= @post.title %>
 			</h1>
@@ -12,11 +13,21 @@
 			<h4>
 				<%= @post.content.html_safe %>
 			</h4>
-			
+			<h2><%= link_to "edit",edit_admin_post_path%></h2>	
 		</section>
-		
-
+		<div>
+			
+		</div>
 	</aside>
+	<% if current_user.admin? %>	
+		<div class="field">
+			<%= form_for ([:admin, @post]) do |f| %>	
+			  <%= f.label :status, "Kiểm Duyệt Bài Viết" %><br>
+			  <%= f.select :status, Post.statuses.keys %>
+			<%= f.submit "allows" %> 
+			<% end %>  
+		</div>
+	<% end %>	
 	<div class="col-md-8">
 		<% if @post.comments.any? %>
 			<h3>comment</h3>

@@ -1,18 +1,44 @@
-<li>
-	<%= link_to gravatar_for(post.user, size: 50), post.user %>
-	<span class="user"><%= link_to post.user.name, post.user %></span>
-	<span class="content">
-		<%= post.title %>
-		<%= image_tag post.display_image if post.image.attached? %>
-		<%= link_to "see", post%>
+<% if post.accepted?|| current_user.admin? %>
 
-	</span>
-	<span class="timestamp">
-	Posted <%= time_ago_in_words(post.created_at) %> ago.
-	<% if logged_in? %>
-		<% if current_user.current_user?(post.user) || current_user.admin? %>
-			<%= link_to "delete", post, method: :delete,data: { confirm: "You sure?" } %>
-		<% end %> 
-	<% end %>
-	</span>
-</li>
+
+ <tr>	
+ 	<td class = "tableuser">
+ 		<p class = "useravatar">
+			<%= link_to gravatar_for(post.user, size: 50), post.user %>
+			<span class= "user"><%= link_to post.user.name, post.user %></span>
+		</p>
+	</td>
+	<td class = "tablecheck">
+		<p class= "mtop">
+			<%= post.title %>
+		</p>	
+	</td>
+	<td >
+		Posted <%= time_ago_in_words(post.created_at) %> ago.
+	</td>
+		
+	<td class = "tablesee" >	
+		<%= link_to "see",admin_post_path(post)%>
+	</td>
+	<td class = "tablesee">
+		<% if logged_in? %>
+			<% if current_user.current_user?(post.user) || current_user.admin? %>
+					<%= link_to "delete", admin_post_path(post), method: :delete,data: { confirm: "You sure?" } %>
+			<% end %> 
+		<% end %>
+	</td>
+	<td class = "tablecheck">
+		<p class = "useravatar">
+		<% if current_user.admin? %>	
+			<div class="field">
+				<%= form_for ([:admin, post]) do |f| %>	
+				  <%= f.select :status, Post.statuses.keys %>
+				<br /><%= f.submit "allows", class: "mtop" %> 
+				<% end %>  
+			</div>
+		<% end %>
+	</p>
+	</td>	
+ </tr>		
+
+<% end %>
