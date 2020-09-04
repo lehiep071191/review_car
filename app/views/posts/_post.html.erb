@@ -1,23 +1,25 @@
-<li id="post-<%= post.id %>">
-<%= link_to gravatar_for(post.user, size: 50), post.user %>
-  <span class="user"><%= link_to post.user.name, post.user %></span>
-  <span class="content">
-    <%= post.title %>
-    <%= link_to "see", post %>
-    <%= image_tag post.display_image if post.image.attached? %>
-  </span>
-  <span class="timestamp">
-  Posted <%= time_ago_in_words(post.created_at) %> ago.
-  <% if logged_in? %>
-    <% if current_user.current_user?(post.user) %>
-      <%= link_to "delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
-      <%= link_to "| edit" , edit_post_path(post) %>
-    <% end %> 
+<div class="body-form-post">
+  <% if current_user.current_user?(post.user) || current_user.admin? || post.accepted? %>
+    <span class="content"> </br>
+       <% if post.accepted? %>
+           <img style="margin:5px" src="https://www.flaticon.com/premium-icon/icons/svg/2665/2665128.svg" width="30" height="30" alt="Instagram">
+           <%else%>
+            <img style="margin:5px" src="https://www.flaticon.com/svg/static/icons/svg/260/260421.svg" width="20" height="20" alt="Instagram">
+       <% end %>  
+        <%= truncate(post.content.html_safe, :length => 1000) %>
+        <%= link_to "See more", post %>
+        <%= image_tag post.display_image if post.image.attached? %>
+      </span>
+      <span class="timestamp"> </br>
+
+      Posted <%= time_ago_in_words(post.created_at) %> ago.
+      <% if logged_in? %> </br>
+        <% if current_user.current_user?(post.user) || current_user.admin? %>
+          <%= link_to "delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= link_to "| edit" , edit_post_path(post) %>
+         <% end %> 
+      <% end %>
+    </span>
   <% end %>
-  </span>
-  <tr>
-    <td>
-      <%= render 'shared/comment_form', post: post %>
-    </td>
-  </tr>
-</li> 
+</div>
+<hr class="omb_hrOr">
