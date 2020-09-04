@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   get '/edit', to: 'comments#edit'
   get 'admin/home', to: 'admin/static_pages#index'
 
+
+
   resources :posts
-
-
   resources :users
+
   namespace :admin do
     resources :posts
     resources :cars
   end
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

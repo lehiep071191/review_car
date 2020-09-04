@@ -1,0 +1,14 @@
+<% provide(:title, 'Car Review Post') %>
+<h1>All post car review </h1>
+<p>
+<%= link_to "Create new car review ", new_post_path %>
+</p>
+<%= will_paginate %>
+
+<ul class="posts">
+		<% @posts.each do |user| %>
+		<%= render @post %>
+	<% end %>
+</ul>
+
+<%= will_paginate %>
