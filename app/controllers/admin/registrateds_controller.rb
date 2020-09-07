@@ -8,10 +8,8 @@ class Admin::RegistratedsController < ApplicationController
   	@registrated = Registrated.new
   end
   def create
-
     registrated_params[:car_ids].reject!{|a| a==""}
   	@registrated = Registrated.new(registrated_params)
-
     if @registrated.save
       flash[:success] = "Registrated created!"
       redirect_to admin_registrateds_path
@@ -33,8 +31,10 @@ class Admin::RegistratedsController < ApplicationController
     end	
   end
   def destroy
-    	@registrated.destroy
+    @registrated.destroy
+
     flash[:success] = "Registrated deleted!"
+
     redirect_to request.referrer || root_url
   end	
 

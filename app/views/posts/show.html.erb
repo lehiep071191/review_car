@@ -1,26 +1,57 @@
+<% provide(:title, @post.title) %>
 <div class = "container"> 
-<% provide(:title, @post.content) %>
-		<section>
-			<h1>
-			<center> <%= @post.title %> </center>	
-			</h1>
-			<h1>
-				<%= image_tag @post.display_image if @post.image.attached? %>
-			</h1>
-			<h4>
-				<%= @post.content.html_safe %>
-			</h4>			
-		</section>
+
+	<span class="user"><%= link_to @post.user.name, @post.user %></span>
+	<div class="row">
+
+		<aside class="col-md-8">
+
+			<section>
+				<p style = "font-size: 40px;">
+					<b><%= @post.title %></b> 
+				</h2>
+			
+				<p>
+					<%= Time.now %>
+					<%= @post.content.html_safe %>
+				</h4>			
+			</section>
+		</aside>	
+	</div>
+	<% if logged_in? %> </br>
+          <% if current_user.current_user?(@post.user) || current_user.admin? %>
+            <%= link_to "delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to "| edit" , edit_post_path(@post) %>
+           <% end %> 
+        <% end %>
+	<% if logged_in? %>
+		<span>
+			
+			<%= render 'follow_form' %>
+			<span id = "post-count">
+				
+					<% if @follow.present? %>
+						You and <%=  @post.follows.count - 1 %> orther people liked post
+					<% else %>
+						<%=  @post.follows.count  %>  people liked post	
+					<% end %> 
+				
+			</span>
+		</span>
+		<h3>comment</h3>
+		<section class="comment_form_form">
+			<%= render 'shared/comment_form' %>
+		</section>  
+	<% end %>
+	<% if @post.comments.any? %>
+			số lượng comment: (<%= @post.comments.count %>)
+		<ol id="comments_ajax">
+			<%= render @comments %>
+		</ol>
+		<%= will_paginate @comments %>
+	<% end %>			
 </div>
-<h3>comment</h3>
-<section class="comment_form_form">
-	<%= render 'shared/comment_form' %>
-</section>  
-<% if @post.comments.any? %>
-	(<%= @post.comments.count %>)
-	<ol id="comments_ajax">
-		<%= render @comments %>
-	</ol>
-	<%= will_paginate @comments %>
-<% end %>	
+
+	
+
 

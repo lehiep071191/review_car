@@ -1,0 +1,9 @@
+<div id="follow-form">
+  <% if @post.follow.nil? %>	
+		<%= render 'follow' %>
+  <% else  %>
+  		<%= render 'unfollow' %>	
+  <% end %>		
+
+</div>
+

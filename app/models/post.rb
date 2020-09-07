@@ -3,6 +3,7 @@ class Post < ApplicationRecord
 	belongs_to :user
 	has_many :follows, dependent: :destroy
 	has_many :comments, dependent: :destroy
+	# has_many :followers, through: :follows, foreign_key: :user_id, class_name: Follow.name
 	has_one_attached :image
 	scope :order_by_time,->{ order(created_at: :desc) }
 	validates :user_id, presence: true
@@ -12,7 +13,7 @@ class Post < ApplicationRecord
 										message: "must be a valid image format" },
 										size:
 									{ less_than: 5.megabytes,
-										message: "should be less than 5MB" }
+										message: "should be less than 5MB" }, presence: true
 	enum status: [:rejected, :accepted]									
 
 
@@ -20,8 +21,6 @@ class Post < ApplicationRecord
 		self.comments
 	end
 	def display_image
-		image.variant(resize_to_limit: [500, 500])
+		image.variant(resize_to_limit: [300,300])
 	end
-
-	
 end
