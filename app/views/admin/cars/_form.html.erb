@@ -1,0 +1,12 @@
+<%= form_for([:admin,@car]) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<%= f.label :name %>
+	<%= f.text_field :name, class: 'form-control' %>
+	<%= f.label :color %>
+	<%= f.text_field :color, class: 'form-control' %>
+	<%= f.label :type_car %>
+	<%= f.text_field :type_car, class: 'form-control' %>
+	<%= f.label :brand %>
+	<%= f.text_field :brand, class: 'form-control' %>
+	<%= f.submit yield(:button_text), class: "btn btn-primary" %>	
+<% end %>
