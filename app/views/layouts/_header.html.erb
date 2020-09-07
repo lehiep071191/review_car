@@ -9,8 +9,9 @@
        <!-- li class="py-2 d-none d-md-inline-block" >Car Reviews</a> -->
         
             <%= link_to "Car Reviews", posts_path, class: "py-2 d-none d-md-inline-block" %>
-       
-      <a class="py-2 d-none d-md-inline-block" href="#">Category</a>
+      <% if logged_in? %>
+        <li class="py-2 d-none d-md-inline-block" href="#"><%= link_to "Test drive", registrateds_path(@registrated)   %></li>
+      <% end %> 
       <a class="py-2 d-none d-md-inline-block" href="#"></a>
       <!-- Search form -->
       <!-- Search form -->

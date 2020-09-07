@@ -1,0 +1,30 @@
+<tr id = "registration-destroy-ajax">
+	<td>
+		<h4>
+			<%= registration.fullname %>
+		</h4>
+	</td>
+	<td>
+		<h4>
+			<%= registration.drive_lisence %>
+		</h4>
+	</td>	
+	<td>
+		<h4>
+			<%= registration.phone %>
+		</h4>
+	</td>	
+		
+	<td>
+		<h4> 
+			<%= registration.car_registrated.car.name %>
+			
+		</h4>
+	</td>
+		
+	<td class = "tablesee">
+		<spand >
+			<%= link_to "delete", admin_registration_path(registration),remote:true ,method: :delete,data: { confirm: "You sure?" } %>
+		</spand>
+	</td>
+</tr>	

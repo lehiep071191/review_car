@@ -20,7 +20,7 @@ class Admin::RegistratedsController < ApplicationController
     end  
   end	
   def show
-
+    @registrations = @registrated.registrations
   end	
   def edit
   end

@@ -9,6 +9,17 @@
 </br>
 <div class="row">
 	<aside class="col-md-4 vta">
+
+		<section class="user_info">
+			<h1>
+				<%= gravatar_for @user %>
+				<%= @user.name %>
+			</h1>
+		<% if @user.registrations.any? %>	
+			<%= render @registrations %>
+		<% end %>	
+		</section>
+
 		<section class="stats">
 	
 		</section>

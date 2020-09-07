@@ -22,9 +22,6 @@ class Admin::PostsController < ApplicationController
     end
   end
   def show
-    @post = Product.find_by id: params[:id]
-    @comment = @post.comments.build
-    @comments = @post.comments.order_by_time.paginate(page: params[:page])
   end 
   def edit
   end  
@@ -37,9 +34,11 @@ class Admin::PostsController < ApplicationController
     end
   end
   def destroy
-    @post.destroy
-    flash[:success] = "post deleted"
-    redirect_to request.referrer || root_url
+      respond_to do |format|
+        @post.destroy
+        format.html { redirect_to admin_posts_path(@post) }
+        format.js
+      end
   end
 
   private
