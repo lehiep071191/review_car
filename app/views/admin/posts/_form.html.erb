@@ -1,0 +1,19 @@
+<%= form_for([:admin, @post]) do |f| %>
+	<div >
+		<p >
+			<%= f.text_field :title,placeholder: "Title" ,class: "form-control" %>
+		</p>
+		<p>
+			<%= f.cktext_area :content, placeholder: "Compose new micropost..." %>
+		</p>
+		<span class="image">
+			<%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+		</span>	
+		<div>	
+			
+		</div>
+		<p class = "submitpost">
+			<%= f.submit "Post", class: "btn btn-primary" %>	
+		</p>
+	</div>
+<% end %>	

@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   def find_user
     @user = User.find_by id:params[:id] 
     if  @user.nil?
-      flash[:danger] = "đã tạo tài khoản này đéo đâu mà đòi xem"
+      flash[:danger] = "ERROR"
       redirect_to root_path
     end
   end 

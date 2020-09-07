@@ -1,8 +1,6 @@
 class Admin::PostsController < ApplicationController
-  before_action :require_admin, only: :destroy
-  # before_action :logged_in_user, only: [:create, :destroy]
-  before_action :find_post, only: [:show] 
-
+  before_action :require_admin, only: [:new,:destroy,:index]
+  before_action :find_post, only: [:show,:edit,:update,:destroy] 
 
   def index
     @posts = Post.all
@@ -11,7 +9,6 @@ class Admin::PostsController < ApplicationController
     @post = Post.new
   end  
   def create
-   
     @post = current_user.posts.build(post_params)
     @post.image.attach(params[:post][:image])
 
@@ -25,7 +22,16 @@ class Admin::PostsController < ApplicationController
   end
   def show
   end 
-
+  def edit
+  end  
+  def update
+    if @post.update(post_params)
+      flash[:success] = "updated"
+      redirect_to admin_posts_path(@post)
+    else
+      render 'edit'
+    end
+  end
   def destroy
     @post.destroy
     flash[:success] = "post deleted"
@@ -34,15 +40,7 @@ class Admin::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:content, :image, :title)
-  end
-
-  def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
+    params.require(:post).permit(:content, :image, :title, :status)
   end
 
   def find_post
