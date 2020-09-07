@@ -1,0 +1,26 @@
+ <tr>	
+ 	
+	<td class = "tablecheck">
+		<p class= "mtop">
+			<%= registrated.title %>
+		</p>	
+	</td>
+	<td >
+			<%= registrated.time_registrated %>
+	</td>
+	<td >
+			<%= registrated.place %>
+	</td>
+		
+	<td class = "tablesee" >	
+		<%= link_to "see",admin_registrated_path(registrated)%>
+	</td>
+	<td class = "tablesee">
+		<% if logged_in? %>
+			<% if  current_user.admin? %>
+					<%= link_to "delete", admin_registrated_path(registrated), method: :delete,data: { confirm: "You sure?" } %>
+			<% end %> 
+		<% end %>
+	</td>
+
+ </tr>	

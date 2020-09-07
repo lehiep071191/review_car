@@ -3,5 +3,7 @@
 <% if logged_in? %>
   <% if current_user.admin? %>
     <%= link_to "administrator", admin_home_path %>
+   
     <% end %>
 <% end %> 
+ <%= link_to "Đăng ký lái thử", registrateds_path(@registrated)   %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_024601) do
+ActiveRecord::Schema.define(version: 2020_09_09_030227) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 2020_09_08_024601) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "car_registrateds", force: :cascade do |t|
+    t.integer "registrated_id"
+    t.integer "car_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "cars", force: :cascade do |t|
@@ -76,13 +83,23 @@ ActiveRecord::Schema.define(version: 2020_09_08_024601) do
     t.integer "status", default: 0, null: false
   end
 
+  create_table "registrateds", force: :cascade do |t|
+    t.date "time_registrated"
+    t.string "place"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+  end
+
   create_table "registrations", force: :cascade do |t|
+    t.integer "car_registrated_id"
     t.integer "user_id"
-    t.integer "car_id"
     t.date "regis_date"
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "fullname"
+    t.integer "drive_lisence"
   end
 
   create_table "subcomments", force: :cascade do |t|

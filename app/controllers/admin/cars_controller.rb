@@ -16,9 +16,7 @@ class Admin::CarsController < ApplicationController
       render 'new'
     end  
   end	
-  def show
 
-  end	
   def edit
   	@car = Car.find_by id:params[:id]
 

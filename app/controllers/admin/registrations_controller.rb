@@ -1,0 +1,22 @@
+class Admin::RegistrationsController < ApplicationController
+
+	# def destroy
+	# 	@registration = Registration.find_by id: params[:id]
+	# 	@registration.destroy
+	# 	flash[:success] = "deleted"
+	# 	redirect_to request.referrer
+	# end	
+	def destroy
+	 	@registration = Registration.find_by id: params[:id]
+	 	respond_to do |format|
+	 		@registration.destroy
+			format.html { redirect_to admin_registrated_path(@registrated) }
+			format.js
+		end
+	end	
+
+	private
+	def find_registration
+		@registration = Registration.find_by id: params[:id]
+	end	
+end	

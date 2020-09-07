@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :posts
+  resources :registrations
+  resources :registrateds
+
   resources :comments do
     resources :subcomments
   end  
@@ -16,6 +19,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :posts
     resources :cars
+    resources :registrateds
+    resources :registrations
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
