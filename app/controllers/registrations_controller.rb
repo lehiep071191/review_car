@@ -1,15 +1,20 @@
 class RegistrationsController < ApplicationController
-	before_action :logged_in_user, only: [:new, :create]
+
+	before_action :logged_in_user, only: [:create]
 	before_action :find_car_registed, only: :create
-	before_action :find_registration, only: [:show]
-	
+	before_action :find_registration, only: [:show, :edit, :update, :destroy, :correct_user]
+	before_action :correct_user, only: [:edit, :update]
+
 	
 	def create
 		@registration = @car_registrated.registrations.build(registration_params)
 		@registration.user = current_user
-		if @registration.save!
+		if @registration.save
 			flash[:success] = "registration create"
 			redirect_to root_url
+		else 
+			flash[:danger] = "errors"
+			redirect_to root_url	
 		end	
 	end
 

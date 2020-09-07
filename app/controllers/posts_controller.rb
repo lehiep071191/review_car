@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 	 before_action :find_post, only: [:show, :edit, :update, :destroy] 
-   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+   before_action :logged_in_user, only: [:edit, :update, :destroy]
 
 
   def index
@@ -20,7 +20,10 @@ class PostsController < ApplicationController
   end
   def show
     @comment = @post.comments.build
-    @comments = @post.comments.paginate(page: params[:page])
+    @comments = @post.comments.order_by_time.paginate(page: params[:page])
+    if logged_in?
+     @follow = current_user.follows.find_by post_id: @post.id
+    end
 
   end 
 

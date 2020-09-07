@@ -9,9 +9,14 @@
 	<%= f.date_field :time_registrated, class: 'form-control' %>
 	Các Loại xe Cho Phép:
 
-	<%= collection_check_boxes(:registrated, :car_ids, Car.all, :id, :name) do |b| %>
-   		<%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
-	<% end %>
-
+	<div>
+		<%= f.select :car_ids, options_for_select(Car.all.pluck(:name, :id), selected: f.object.car_ids), {include_blank: true} %>
+	</div>
 	<br /><%= f.submit yield(:button_text), class: "btn btn-primary" %>	
 <% end %>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.registrated_car_ids').select2();
+	});
+</script>

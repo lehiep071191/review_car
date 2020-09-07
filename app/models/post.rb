@@ -3,6 +3,7 @@ class Post < ApplicationRecord
 	belongs_to :user
 	has_many :follows, dependent: :destroy
 	has_many :comments, dependent: :destroy
+	# has_many :followers, through: :follows, foreign_key: :user_id, class_name: Follow.name
 	has_one_attached :image
 	scope :order_by_time,->{ order(created_at: :desc) }
 	validates :user_id, presence: true
@@ -22,6 +23,4 @@ class Post < ApplicationRecord
 	def display_image
 		image.variant(resize_to_limit: [500, 500])
 	end
-
-	
 end

@@ -80,10 +80,26 @@
               <a href="http://youtube.com/user/username" ><img style="margin:5px" src="https://motoro.wpsixer.com/motoro-classo/wp-content/plugins/listing/assets/images/categories_icons/icons8-alfa-romeo-65.png" width="50" height="50" alt="YouTube"></a>
           </div>
        </center> 
-      <div> 
-    </div>
-  </body>
-</html>
+     
+
+
+    <div style = "width: 500px;" >
+        <%= truncate(hienthipost[1].content, :length => 400, :omission => "" ,           :escape => false) %>
+        <%= link_to "see more", post_path(hienthipost[1]) %>
+
+        <%= truncate(hienthipost[2].content, :length => 400, :omission => "" ,       :escape => false) %>
+        <%= link_to "see more", post_path(hienthipost[2]) %>
+  
+ 
+        <%= truncate(hienthipost[3].content, :length => 400, :omission => "" , :escape => false) %>
+        <%= link_to "see more", post_path(hienthipost[3]) %>
+         
+        <%= truncate(hienthipost[0].content, :length => 400, :omission => "" , :escape => false) %>
+        <%= link_to "see more", post_path(hienthipost[0]) %>
+      </div>  
+        
+</body>
+
 
 
  

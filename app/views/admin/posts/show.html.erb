@@ -1,9 +1,10 @@
-<% provide(:title, @post.content) %>
+
+<% provide(:title, @post.title) %>
 <span class="user"><%= link_to @post.user.name, @post.user %></span>
 <div class="row">
-	<aside class="col-md-4">
+	<aside class="col-md-8">
 		<section>
-		
+			
 			<h1>
 				<%= @post.title %>
 			</h1>
@@ -13,9 +14,11 @@
 			<h4>
 				<%= @post.content.html_safe %>
 			</h4>
-			<h2><%= link_to "edit",edit_admin_post_path%></h2>	
+			
 		</section>
+
 	</aside>
+	<h2><%= link_to "edit",edit_admin_post_path%></h2> |
 	<% if current_user.admin? %>	
 		<div class="field">
 			<%= form_for ([:admin, @post]) do |f| %>	
@@ -25,3 +28,5 @@
 			<% end %>  
 		</div>
 	<% end %>	
+	<a href="#" class="cd-top">Back To Top</a>
+

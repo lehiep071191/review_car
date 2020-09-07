@@ -1,7 +1,12 @@
-<%= form_for (@post) do |f| %>
+<div style  = "max-width: 800px;">
+	<%= form_for (@post) do |f| %>
 			<div >
 				<p >
-					<%= f.text_field :title,placeholder: "Title" ,class: "form-control" %>
+				<select class="js-example-basic-multiple"   name="state" multiple="multiple">
+					<%= Post.all.each do |post| %>
+   	  					<option value="<%= post.title %>" ></option>
+   					<% end %>
+				</select>	
 				</p>
 				<p>
 					<%= f.cktext_area :content, placeholder: "Compose new micropost..." %>
@@ -11,7 +16,12 @@
 				</p>
 			</div>
 	<% end %>	
-
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+</script>
 
 
 

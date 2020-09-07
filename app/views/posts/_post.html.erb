@@ -1,26 +1,36 @@
 <div class="body-form-post">
-  <% if current_user.current_user?(post.user) || current_user.admin? || post.accepted? %>
-    <span class="content"> </br>
-       <% if post.accepted? %>
-           <img style="margin:5px" src="https://www.flaticon.com/premium-icon/icons/svg/2665/2665128.svg" width="30" height="30" alt="Instagram">
-           <%else%>
-            <img style="margin:5px" src="https://www.flaticon.com/svg/static/icons/svg/260/260421.svg" width="20" height="20" alt="Instagram">
-       <% end %>  
-        <%= truncate(post.content.html_safe, :length => 1000) %>
-        <%= link_to "See more", post %>
-        <%= image_tag post.display_image if post.image.attached? %>
-      </span>
-      <span class="timestamp"> </br>
+  <% if logged_in? %>
+    <% if current_user.current_user?(post.user) || current_user.admin? || post.accepted? %>
+      <span class="content"> </br>
+         <% if post.accepted? %>
+             <img style="margin:5px" src="https://www.flaticon.com/premium-icon/icons/svg/2665/2665128.svg" width="30" height="30" alt="Instagram">
+             <%else%>
+              <img style="margin:5px" src="https://www.flaticon.com/svg/static/icons/svg/260/260421.svg" width="20" height="20" alt="Instagram">
+         <% end %>  
+          <%= truncate(post.content, :length => 400, :omission => "" , :escape => false) %>
+          <%= link_to "See more", post %>
+          <%= image_tag post.display_image if post.image.attached? %>
+        </span>
+        <span class="timestamp"> </br>
 
-      Posted <%= time_ago_in_words(post.created_at) %> ago.
-      <% if logged_in? %> </br>
-        <% if current_user.current_user?(post.user) || current_user.admin? %>
-          <%= link_to "delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
-          <%= link_to "| edit" , edit_post_path(post) %>
-         <% end %> 
-      <% end %>
-    </span>
-  <% end %>
+        Posted <%= time_ago_in_words(post.created_at) %> ago.
+        <% if logged_in? %> </br>
+          <% if current_user.current_user?(post.user) || current_user.admin? %>
+            <%= link_to "delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to "| edit" , edit_post_path(post) %>
+           <% end %> 
+        <% end %>
+      </span>
+    <% end %>
+  <% else %>
+    <% if post.accepted? %>
+        <span class="content"> </br>  
+            <%= truncate(post.content, :length => 400, :omission => "" , :escape => false) %>
+            <%= link_to "See more", post %>
+            <%= image_tag post.display_image if post.image.attached? %>
+          </span>
+      <% end %>  
+  <% end %>    
 </div>
 <hr class="omb_hrOr">
 

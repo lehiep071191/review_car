@@ -92,6 +92,14 @@ ActiveRecord::Schema.define(version: 2020_09_10_041353) do
     t.string "title"
   end
 
+  create_table "registrateds", force: :cascade do |t|
+    t.date "time_registrated"
+    t.string "place"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+  end
+
   create_table "registrations", force: :cascade do |t|
     t.integer "car_registrated_id"
     t.integer "user_id"

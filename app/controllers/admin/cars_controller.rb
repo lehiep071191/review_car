@@ -30,10 +30,12 @@ class Admin::CarsController < ApplicationController
     end	
   end
   def destroy
-    	@car.destroy
-    flash[:success] = "post deleted"
-    redirect_to request.referrer || root_url
-  end	
+     respond_to do |format|
+        @car.destroy
+        format.html { redirect_to admin_cars_path(@car) }
+        format.js
+      end	
+  end    
   private 
   def car_params	
   	params.require(:car).permit(:name, :color ,:type_car,:brand,:status)

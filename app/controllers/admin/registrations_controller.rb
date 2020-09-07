@@ -1,4 +1,5 @@
 class Admin::RegistrationsController < ApplicationController
+
 	def destroy
 	 	@registration = Registration.find_by id: params[:id]
 	 	respond_to do |format|
@@ -6,5 +7,9 @@ class Admin::RegistrationsController < ApplicationController
 			format.html { redirect_to admin_registrated_path(@registrated) }
 			format.js
 		end
+	end	
+	private
+	def find_registration
+		@registration = Registration.find_by id: params[:id]
 	end	
 end	

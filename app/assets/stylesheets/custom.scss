@@ -1,3 +1,4 @@
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
@@ -434,6 +435,7 @@ tr th{
 }
 
 
+
 .admin{
 	    margin-left: 160px;
 }
@@ -449,6 +451,7 @@ tr th{
 }
 .contaner-admin{
 	max-width: 960px;
+
 }
 .active-purple-2 input.form-control[type=text]:focus:not([readonly]) {
   border-bottom: 1px solid #ce93d8;
@@ -748,4 +751,5 @@ li {
         background-color: #f1f1f1;
         color: black;
       }
-   
+
+
