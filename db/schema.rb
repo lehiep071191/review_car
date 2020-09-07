@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 2020_09_08_024601) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "car_registrateds", force: :cascade do |t|
+    t.integer "car_id"
+    t.string "registrated_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "cars", force: :cascade do |t|
     t.string "name"
     t.string "color"
@@ -76,9 +83,17 @@ ActiveRecord::Schema.define(version: 2020_09_08_024601) do
     t.integer "status", default: 0, null: false
   end
 
+  create_table "registrateds", force: :cascade do |t|
+    t.date "time_registrated"
+    t.string "place"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+  end
+
   create_table "registrations", force: :cascade do |t|
+    t.integer "car_registrated_id"
     t.integer "user_id"
-    t.integer "car_id"
     t.date "regis_date"
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false

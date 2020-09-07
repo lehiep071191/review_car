@@ -3,7 +3,7 @@ class User < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	has_many :follows, dependent: :destroy
 	has_many :registrations
-	has_many :cars, through: :registrations			
+	has_many :car_registrateds, through: :registrations			
 	attr_accessor :remember_token
 	before_save :downcase_email
 	validates :name, length:{ maximum: 50 }

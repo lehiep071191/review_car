@@ -180,6 +180,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    select2-rails (4.0.13)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -245,6 +246,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   sass-rails (>= 6)
+  select2-rails
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -257,7 +259,7 @@ DEPENDENCIES
   will_paginate
 
 RUBY VERSION
-   ruby 2.7.1p83
+   ruby 2.7.0p0
 
 BUNDLED WITH
    2.1.4
