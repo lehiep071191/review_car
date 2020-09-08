@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   
   def correct_user
     if !current_user.current_user?(@user)
-      flash[:danger] = "không được phép sửa user của người khác"
+      flash[:danger] = "Error: Sorry, You can't edit another account !"
       redirect_to @user
     end 
   end
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   def find_user
     @user = User.find_by id:params[:id] 
     if  @user.nil?
-      flash[:danger] = "ERROR"
+      flash[:danger] = "User is not exist !"
       redirect_to root_path
     end
   end 

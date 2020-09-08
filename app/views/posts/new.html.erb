@@ -1,0 +1,21 @@
+<center><h1> Post car review </h1></center>
+<div >
+	<%= form_for (@post) do |f| %>
+			<div >
+				<p >
+					<%= f.text_field :title,placeholder: "Title" ,class: "form-control" %>
+				</p>
+				<p>
+					<%= f.cktext_area :content, placeholder: "Compose new micropost..." %>
+				</p>	
+				<p >
+					<%= f.submit "Post", class: "btn btn-primary btn-lg btn-block" %>	
+				</p>
+			</div>
+	<% end %>	
+</div>
+
+
+
+
+
