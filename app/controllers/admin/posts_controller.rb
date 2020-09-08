@@ -22,6 +22,9 @@ class Admin::PostsController < ApplicationController
     end
   end
   def show
+    @post = Product.find_by id: params[:id]
+    @comment = @post.comments.build
+    @comments = @post.comments.order_by_time.paginate(page: params[:page])
   end 
   def edit
   end  
