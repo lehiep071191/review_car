@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get '/edit', to: 'comments#edit'
   get 'admin/home', to: 'admin/static_pages#index'
 
-
-
-  resources :posts
   resources :users
+  resources :posts
+  resources :comments do
+    resources :subcomments
+  end  
 
   namespace :admin do
     resources :posts

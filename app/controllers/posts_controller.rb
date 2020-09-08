@@ -18,8 +18,10 @@ class PostsController < ApplicationController
       flash[:danger] = "FAIL - Please read message error !"
     end
   end
+  
   def show
-
+    @comment = @post.comments.build
+    @comments = @post.comments.order_by_time.paginate(page: params[:page])
   end 
 
   def edit

@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   def index
     @users = User.paginate(page: params[:page])
   end
-    def show
+  def show
       @posts = @user.posts.order_by_time.paginate(page: params[:page])
+      @comment = current_user.comments.new
   end
   def new
     @user = User.new

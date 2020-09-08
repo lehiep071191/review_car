@@ -13,7 +13,6 @@ module UsersHelper
 				 "Giới tính: Nam"	
 			elsif @user.gender == 2
 				 "Giới tính: Nữ"	
-
 		end	
 	end
 
