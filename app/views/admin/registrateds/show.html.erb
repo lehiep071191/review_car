@@ -1,0 +1,28 @@
+<% provide(:title, @registrated.title) %>
+<div class="row">
+	<aside class="col-md-4">
+		<section>
+		
+			<h1>
+				<%= @registrated.title %>
+			</h1>
+			<h4>
+				<%= @registrated.time_registrated %>
+			</h4>
+			<h4>
+				<%= @registrated.place%>
+			</h4>
+			<h4>Xe Sử dụng: 
+				<% @registrated.cars.each do |car| %>
+					<%= car.name %>,  
+				<% end %>
+					cho đợt lái thử
+			</h4>
+				
+		</section>
+		<div>
+			
+		</div>
+	</aside>
+</div>
+
