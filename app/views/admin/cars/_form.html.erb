@@ -1,4 +1,4 @@
-<%= form_for([:admin,@car]) do |f| %>
+<%= form_for([:admin,@car], remote: true) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	<%= f.label :name %>
 	<%= f.text_field :name, class: 'form-control' %>
@@ -8,5 +8,5 @@
 	<%= f.text_field :type_car, class: 'form-control' %>
 	<%= f.label :brand %>
 	<%= f.text_field :brand, class: 'form-control' %>
-	<%= f.submit yield(:button_text), class: "btn btn-primary" %>	
+	<%= f.submit 'Allow', class: "btn btn-primary" %>	
 <% end %>

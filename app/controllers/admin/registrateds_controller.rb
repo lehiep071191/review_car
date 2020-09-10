@@ -34,9 +34,12 @@ class Admin::RegistratedsController < ApplicationController
     end	
   end
   def destroy
-    	@registrated.destroy
-    flash[:success] = "post deleted"
-    redirect_to request.referrer || root_url
+    @registrated = Registrated.find_by id: params[:id]
+    respond_to do |format|
+      @registration.destroy
+      format.html { redirect_to admin_registrateds_path }
+      format.js
+    end  
   end	
 
 

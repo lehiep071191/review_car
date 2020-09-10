@@ -1,19 +1,16 @@
-<% provide(:title, @post.content) %>
+<% provide(:title, @post.title) %>
 <span class="user"><%= link_to @post.user.name, @post.user %></span>
 <div class="row">
 	<aside class="col-md-4">
 		<section>
 		
 			<h1>
-				<%= @post.title %>
-			</h1>
-			<h1>
 				<%= image_tag @post.display_image if @post.image.attached? %>
 			</h1>
 			<h4>
 				<%= @post.content.html_safe %>
 			</h4>
-			<h2><%= link_to "edit",edit_admin_post_path%></h2>	
+			
 		</section>
 		<div>
 			
@@ -27,5 +24,6 @@
 			<%= f.submit "allows" %> 
 			<% end %>  
 		</div>
+		<h2><%= link_to "edit",edit_admin_post_path%></h2>	
 	<% end %>	
 

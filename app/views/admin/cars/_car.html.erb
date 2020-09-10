@@ -1,4 +1,4 @@
- <tr>	
+ <tr id ="car-ajax">	
  	<td class = "tableuser">
  		<h3 class= "mtop">
 			<%= car.type_car %>
@@ -23,11 +23,14 @@
 		Khởi tạo <%= time_ago_in_words(car.created_at) %> trước.
 	</td>
 		
-	<td class = "tablesee" >	
-		<%= link_to "edit",edit_admin_car_path(car) %>
-	</td>
+	
 	<td class = "tablesee">
-					<%= link_to "delete", admin_car_path(car), method: :delete,data: { confirm: "You sure?" } %>
+		<spand id = "edit_car-ajax">
+			<%= link_to "delete", admin_car_path(car), method: :delete,data: { confirm: "You sure?" } %>
+		</spand>
+		<td class = "tablesee" >	
+		<%= link_to "edit",edit_admin_car_path(car), remote: true %>
+	</td>	
 	</td>
 
 		

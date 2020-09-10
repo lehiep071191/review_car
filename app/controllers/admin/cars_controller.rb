@@ -9,11 +9,15 @@ class Admin::CarsController < ApplicationController
   end
   def create
   	@car = Car.new(car_params)
-    if @car.save
-      flash[:success] = "D"
-      redirect_to admin_cars_path
-    else
-      render 'new'
+    respond_to do |format|
+      if @car.save
+        format.js
+        format.html { redirect_to @cars, noitice: 'Car was created' }
+        format.json {render :show, status: :created, localtion: @car}
+      else
+        format.js
+        format.html { render :new, noitice: 'shared/errors_messages'}
+      end  
     end  
   end	
 
@@ -22,17 +26,30 @@ class Admin::CarsController < ApplicationController
 
   end
   def update
-  	if @car.update(car_params)
-      flash[:success] = "updated"
-      redirect_to admin_cars_path(@car)
-    else
-      render 'edit'
-    end	
+     respond_to do |format|
+      if @car.update(car_params)
+        format.js
+        format.html { redirect_to admin_cars_path(@car), noitice: 'Car was updated' }
+        format.json {render :show, status: :update, localtion: @car}
+      else
+        format.js
+        format.html { render :edit, noitice: 'shared/errors_messages'}
+      end  
+  end    
+  	# if @car.update(car_params)
+   #    flash[:success] = "updated"
+   #    redirect_to admin_cars_path(@car)
+   #  else
+   #    render 'edit'
+   #  end	
   end
+
   def destroy
-    	@car.destroy
-    flash[:success] = "post deleted"
-    redirect_to request.referrer || root_url
+    	respond_to do |format|
+        @car.destroy
+        format.html { redirect_to admin_cars_path(@car) }
+        format.js
+      end
   end	
   private 
   def car_params	

@@ -1,11 +1,11 @@
 <div class = "container" >
 <h1>All cars</h1>
 <p>
-	<%= link_to "tạo bài viết mới", new_admin_car_path %>
+	<spand id = "new_car-ajax"><%= link_to "new_car", new_admin_car_path, remote: true %></spand>
 </p>
 
-<ul class="posts">	
-	<table>
+
+	<table id = "cars"> 
 		 <tr>
  	<th>
  		Loại xe
@@ -30,7 +30,10 @@
  		Xóa
  	</th>
   </tr>	
-		<%= render @cars %>
+  	<tbody id = "">
+  		<%= render @cars %>
+  	</tbody>
+		
 	</table>		
-</ul>
+
 </div>

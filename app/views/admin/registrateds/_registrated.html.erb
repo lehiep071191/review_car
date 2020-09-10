@@ -1,4 +1,4 @@
- <tr>	
+ <tr id = "registratde-ajax">	
  	
 	<td class = "tablecheck">
 		<p class= "mtop">
@@ -18,7 +18,7 @@
 	<td class = "tablesee">
 		<% if logged_in? %>
 			<% if  current_user.admin? %>
-					<%= link_to "delete", admin_registrated_path(registrated), method: :delete,data: { confirm: "You sure?" } %>
+					<%= link_to "delete", admin_registrated_path(registrated), remote: true, method: :delete,data: { confirm: "You sure?" } %>
 			<% end %> 
 		<% end %>
 	</td>
