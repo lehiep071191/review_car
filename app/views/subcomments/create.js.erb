@@ -1,0 +1,3 @@
+$('#subcomment_content').val('');
+$('#comments-<%= @comment.id%>').append("<%= j render @subcomment %>");
+$('#new_subcomment').remove()

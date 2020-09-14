@@ -2,14 +2,17 @@ class CommentsController < ApplicationController
 	before_action :logged_in_user, only: [:create]
 	before_action :find_comment, only: [:edit, :update, :destroy, :correct_user]
 	before_action :correct_user, only: [:edit, :update]
+	after_action :comment_ajax, only: [:edit, :update, :destroy]
 	def create
-	
 		@post = Post.find_by(id: comment_params[:post_id])
 		@comment = @post.comments.build(comment_params)
 		@comment.user = current_user
 		if @comment.save!
-			flash[:success] = "Comment create"
-			redirect_to request.referrer
+			flash[:success] = "Created comment."
+			respond_to do |format|
+				format.html { redirect_to @post }
+				format.js
+			end
 		end	
 	end
 
@@ -21,13 +24,12 @@ class CommentsController < ApplicationController
 
 	def update
 		if @comment.update(comment_params)
-			flash[:success] = "Updated successfull."
+			flash[:success] = "Updated comment."
 		end
 	end
 
 	def destroy
 		@comment.destroy
-		redirect_to @comment.post
 	end
 
 	private
@@ -49,4 +51,10 @@ class CommentsController < ApplicationController
 		params.require(:comment).permit(:content, :post_id, :user_id)
 	end
 
+	def comment_ajax
+		respond_to do |format|
+				format.html { redirect_to @comment.post }
+				format.js
+			end
+	end 
 end	
