@@ -1,18 +1,25 @@
- <nav class="site-header sticky-top py-1 nav-height">
-  <div class="container d-flex flex-column flex-md-row justify-content-between nav-margin">
-      <ul>
-        <% if logged_in? %>
-          <%if current_user.admin? %>
-            <%= link_to image_tag("admin.png", alt: "Rails logo", width: "50px",height: "50px"), admin_home_path %>
-            <% end %>
-        <% end %>    
-      </ul>
-   
-   	 
+     <nav class="site-header sticky-top py-1 nav-height"> 
+      <div class="container d-flex flex-column flex-md-row justify-content-between nav-margin">
+      <a class="py-2" href= root_path aria-label="Product">
+      <%= link_to image_tag("tesla-logo.png", alt: "Tesla logo" , width: "50px") ,root_path %>
       <li class="py-2 d-none d-md-inline-block"><%= link_to "Home", root_path %></li>
+      <a class="py-2 d-none d-md-inline-block" href="#">News</a>
+      
+      <!-- <a class="py-2 d-none d-md-inline-block" href="#">Car Reviews</a> -->
+       <!-- li class="py-2 d-none d-md-inline-block" >Car Reviews</a> -->
+        
+            <%= link_to "Car Reviews", posts_path, class: "py-2 d-none d-md-inline-block" %>
+       
+      <a class="py-2 d-none d-md-inline-block" href="#">Category</a>
+      <a class="py-2 d-none d-md-inline-block" href="#"></a>
+      <!-- Search form -->
+      <!-- Search form -->
+      <div class="md-form active-pink-2 mb-3">
+        <input class="form-control" type="text" placeholder="Search " aria-label="Search">
+      </div>
     	<% if logged_in? %>
         <%if current_user.admin? %>
-        <li class = "py-2 d-none d-md-inline-block"><%= link_to "Users", users_path %></li>
+       
         <% else %>
         <% end %>
         <li class="py-2 d-none d-md-inline-block">
@@ -20,6 +27,9 @@
           Account <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
+            <% if current_user.admin? %>
+              <li><%= link_to "Adminstrator", admin_home_path %></li>
+            <% end %>
             <li><%= link_to "Profile", current_user %></li>
             <li><%= link_to "Settings", edit_user_path(current_user) %></li>
             <li class="divider"></li>
@@ -30,7 +40,8 @@
         </li>
       <% else %>
           <li class="py-2 d-none d-md-inline-block"><%= link_to "Log in", login_path %></li>
-          <li class="py-2 d-none d-md-inline-block"><%= link_to "Signup", signup_path %></li>
+          <li class="py-2 d-none d-md-inline-block"><%= link_to "| Signup", signup_path %></li>
+          
       <% end %>
 
   </div>

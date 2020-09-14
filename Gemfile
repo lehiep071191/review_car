@@ -58,3 +58,5 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'ckeditor'
 gem "select2-rails"
+gem "paperclip"
+

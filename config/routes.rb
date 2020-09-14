@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get 'admin/home', to: 'admin/static_pages#index'
 
+
   resources :users
   resources :posts
   resources :comments do
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :cars
     resources :registrateds
+
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
