@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2020_09_10_041353) do
+ActiveRecord::Schema.define(version: 2020_09_09_030227) do
 
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_041353) do
   end
 
   create_table "car_registrateds", force: :cascade do |t|
+    t.integer "registrated_id"
     t.integer "car_id"
-    t.string "registrated_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_041353) do
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "fullname"
+    t.integer "drive_lisence"
   end
 
   create_table "subcomments", force: :cascade do |t|

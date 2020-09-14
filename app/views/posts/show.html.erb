@@ -14,6 +14,7 @@
 		<section class="comment_form_form">
 			<%= render 'shared/comment_form' %>
 		</section>
+
 		<% if @post.comments.any? %>
 			<h3>comment</h3>
 			(<%= @post.comments.count %>)
@@ -22,5 +23,4 @@
 			</ol>
 			<%= will_paginate @comments %>
 		<% end %>	
-		
 </div>
