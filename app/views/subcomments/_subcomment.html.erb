@@ -1,10 +1,12 @@
-<ul >
+<ul id ="subcomments-<%= subcomment.id %>">
 	<span id="gravatar"><%= gravatar_for subcomment.user, size: 20 %></span>
 	<span class="user"><b><%= subcomment.user.name %></b></span><br>
-	<span class="content"><%= subcomment.content %></span><br>
+	<span class="subcontent-<%= subcomment.id %>"><%= subcomment.content %></span><br>
 	<span class="timestamp">
 		Posted <%= time_ago_in_words(subcomment.created_at) %> ago
-		<%= link_to "delete", comment_subcomment_path(subcomment), method: :delete, data: { confirm: "You sure?" } %>
-		<%= link_to "edit",  edit_comment_subcomment_path(subcomment) %>
+		<%= link_to "delete", comment_subcomment_path(subcomment.comment, subcomment), 
+							  method: :delete, data: { confirm: "You sure?" }, remote: true %>
+		<%= link_to "edit",  edit_comment_subcomment_path(subcomment.comment, subcomment), remote: true %>
 	</span>
+	<div id="edit-subcomment-<%= subcomment.id%>"></div>
 </ul>	

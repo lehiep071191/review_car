@@ -1,4 +1,4 @@
-<%= form_for([:comment, @subcomment]) do |f| %>
+<%= form_for [:comment, @subcomment], remote: true do |f| %>
 	<div class="field">
 		<%= f.text_area :content, placeholder: "Compose new comment..." %>
 	</div>

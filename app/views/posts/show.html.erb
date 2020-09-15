@@ -11,16 +11,16 @@
 				<%= @post.content.html_safe %>
 			</h4>			
 		</section>
-		<section class="comment_form_form">
-			<%= render 'shared/comment_form' %>
-		</section>
-
-		<% if @post.comments.any? %>
-			<h3>comment</h3>
-			(<%= @post.comments.count %>)
-			<ol class="microposts">
-				<%= render @comments %>
-			</ol>
-			<%= will_paginate @comments %>
-		<% end %>	
 </div>
+<h3>comment</h3>
+<section class="comment_form_form">
+	<%= render 'shared/comment_form' %>
+</section>  
+<% if @post.comments.any? %>
+	(<%= @post.comments.count %>)
+	<ol id="comments_ajax">
+		<%= render @comments %>
+	</ol>
+	<%= will_paginate @comments %>
+<% end %>	
+
