@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/search'
   mount Ckeditor::Engine => '/ckeditor'
   root 'static_pages#home'
   get'/signup', to: 'users#new'
@@ -6,6 +7,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get 'admin/home', to: 'admin/static_pages#index'
+
+  #serach furture
+  get '/search', to: 'pages#search', as: 'search_page' 
 
 
   resources :users

@@ -14,10 +14,16 @@
       <% end %> 
       <a class="py-2 d-none d-md-inline-block" href="#"></a>
       <!-- Search form -->
-      <!-- Search form -->
-      <div class="md-form active-pink-2 mb-3">
-        <input class="form-control" type="text" placeholder="Search " aria-label="Search">
-      </div>
+      <%= form_tag(search_page_path, :method => "get",   
+          class: 'navbar-form navbar-left') do %>  
+          <div class="input-group">  
+            <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+            <div class="input-group-btn">  
+              <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+            </div>  
+          </div>  
+      <% end %>
+<!--  -->
     	<% if logged_in? %>
         <%if current_user.admin? %>
        
