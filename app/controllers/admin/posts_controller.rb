@@ -4,7 +4,7 @@ class Admin::PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order_by_time
   end  
   def new
     @post = Post.new
@@ -36,8 +36,8 @@ class Admin::PostsController < ApplicationController
   def destroy
       respond_to do |format|
         @post.destroy
-        format.html { redirect_to admin_posts_path(@post) }
         format.js
+        format.html { redirect_to admin_posts_path }
       end
   end
 

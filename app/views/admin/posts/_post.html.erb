@@ -1,5 +1,4 @@
 <% if post.accepted?|| current_user.admin? %>
-
  <tr id = "post_ajax">	
 
 	<td class = "tableuser">
@@ -23,7 +22,7 @@
 	<td class = "tablesee">
 		<% if logged_in? %>
 			<% if current_user.current_user?(post.user) || current_user.admin? %>
-					<%= link_to "delete", admin_post_path(post), method: :delete,data: { confirm: "You sure?" } %>
+					<%= link_to "delete", admin_post_path(post), method: :delete,data: { confirm: "You sure?", remote: true } %>
 			<% end %> 
 		<% end %>
 	</td>

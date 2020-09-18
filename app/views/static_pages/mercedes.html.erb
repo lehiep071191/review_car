@@ -1,0 +1,9 @@
+<center><h1>Tất cả các bài viết về xe mercedes</h1></center>
+<div class = "container">
+<% Post.all.each do |post| %>
+	<% if post.mercedes? && post.accepted? %>
+	<h3><%= link_to (post.title), post %></h3>
+	<%= link_to (image_tag post.display_image if post.image.attached?), post %>
+	<% end %>
+<% end %>
+</div>

@@ -24,8 +24,10 @@ class PostsController < ApplicationController
     @comment = @post.comments.build
     @comments = @post.comments.order_by_time.paginate(page: params[:page])
     if logged_in?
-     @follow = current_user.follows.find_by post_id: @post.id
-     @follows = @post.follows
+      @follow = current_user.follows.find_by post_id: @post.id
+      @follows = @post.follows
+      @report = current_user.reports.find_by post_id: @post.id
+      @reports = @post.reports
     end
 
   end 
