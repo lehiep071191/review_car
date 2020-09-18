@@ -1,0 +1,7 @@
+<span id = "post-count">		
+	<% if @follow.present? %>
+		You and <%=  @post.follows.count - 1 %> orther people liked post
+	<% else %>
+		<%=  @post.follows.count  %>  people liked post	
+	<% end %> 
+</span>

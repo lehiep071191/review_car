@@ -8,9 +8,14 @@
 			<%= f.cktext_area :content, placeholder: "Compose new micropost..." %>
 		</p>	
 			<%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+		<p>
+			<%= f.select :brand, Post.brands.keys, prom: "select1" %>
+				
+		</p>	
 		<p >
 			<%= f.submit "Post", class: "btn btn-primary btn-lg btn-block" %>	
 		</p>
+
 <% end %>	
 </div>
 

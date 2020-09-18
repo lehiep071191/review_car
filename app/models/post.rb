@@ -14,7 +14,8 @@ class Post < ApplicationRecord
 										size:
 									{ less_than: 5.megabytes,
 										message: "should be less than 5MB" }, presence: true
-	enum status: [:rejected, :accepted]									
+	enum status: [:rejected, :accepted]	
+	enum brand: [:other, :mercedes, :ferrari, :lamborghini, :porsche, :audi, :bmw]								
 
 
 	def feed_comment

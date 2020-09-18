@@ -1,4 +1,6 @@
-<%= form_for(current_user.follows.find_by(post_id: @post.id),
-	html: { method: :delete }, remote: true) do |f| %>
-	<%= f.submit "Dislike", class: "btn btn-primary" %>
-<% end %>
+<div id = "bt-image" >
+	<%= form_for(current_user.follows.find_by(post_id: @post.id),
+		html: { method: :delete }, remote: true) do |f| %>
+		<%= image_submit_tag("dislikes.jpg")  %>
+	<% end %>
+</div>

@@ -1,0 +1,9 @@
+
+<div class = "container">
+	<center><h1>tất cả các xe <%= params[:brand_type]  %></h1> </center>
+<% @brands.each do |post| %>
+
+	<h2><%= link_to post.title, post %></h2>
+	<%=link_to (image_tag post.display_image if post.image.attached?), post_path(post) %>
+<% end %>	
+</div> 
