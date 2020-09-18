@@ -1,3 +1,4 @@
+
 <li id="comments-<%= comment.id %>">
 	<span id="gravatar"><%= gravatar_for comment.user, size: 20 %></span>
 	<span class="user"><b><%= comment.user.name %></b></span>
@@ -8,15 +9,17 @@
 	<span id="subcomment-<%= comment.id%>">
 		<%= link_to "Reply", new_comment_subcomment_path(comment), remote: true %>
 	</span>
-	<span>
-		<% if current_user && current_user.current_user?(comment.user) %>
-			<%= link_to "delete",comment_path(comment), method: :delete,
-														data: {confirm: "You sure?"}, remote: true%>
-			<%= link_to "edit", edit_comment_path(comment), remote: true %>
-		<% end %>
-	</span><br>
-	<span>
-		<%= render comment.subcomments %>
-	</span>
+	<% if logged_in? %>	
+		<span>
+			<% if current_user && current_user.current_user?(comment.user) %>
+				<%= link_to "delete",comment_path(comment), method: :delete,
+															data: {confirm: "You sure?"}, remote: true%>
+				<%= link_to "edit", edit_comment_path(comment), remote: true %>
+			<% end %>
+		</span><br>
+		<span>
+			<%= render comment.subcomments %>
+		</span>
+	<% end %>
 </li>
-
+	

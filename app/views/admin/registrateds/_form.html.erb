@@ -8,10 +8,8 @@
 	<%= f.label :time_registrated %>
 	<%= f.date_field :time_registrated, class: 'form-control' %>
 	Các Loại xe Cho Phép:
-
 	<%= collection_check_boxes(:registrated, :car_ids, Car.all, :id, :name) do |b| %>
    		<%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
 	<% end %>
-
 	<br /><%= f.submit yield(:button_text), class: "btn btn-primary" %>	
 <% end %>

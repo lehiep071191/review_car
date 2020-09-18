@@ -1,16 +1,18 @@
+<div class = "container" >
 <%= form_for (@post) do |f| %>
-			<div >
-				<p >
-					<%= f.text_field :title,placeholder: "Title" ,class: "form-control" %>
-				</p>
-				<p>
-					<%= f.cktext_area :content, placeholder: "Compose new micropost..." %>
-				</p>	
-				<p >
-					<%= f.submit "Post", class: "btn btn-primary btn-lg btn-block" %>	
-				</p>
-			</div>
-	<% end %>	
+	<%= render 'shared/error_messages', object: f.object %>	
+		<p >
+			<%= f.text_field :title,placeholder: "Title" ,class: "form-control" %>
+		</p>
+		<p>
+			<%= f.cktext_area :content, placeholder: "Compose new micropost..." %>
+		</p>	
+			<%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+		<p >
+			<%= f.submit "Post", class: "btn btn-primary btn-lg btn-block" %>	
+		</p>
+<% end %>	
+</div>
 
 
 

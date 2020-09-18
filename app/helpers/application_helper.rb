@@ -6,4 +6,5 @@ module ApplicationHelper
     def options_for_cars
 		@registrated.cars.pluck(:name, :id)
 	end
+	
 end

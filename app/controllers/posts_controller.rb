@@ -1,26 +1,32 @@
 class PostsController < ApplicationController
 	 before_action :find_post, only: [:show, :edit, :update, :destroy] 
-   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+   before_action :logged_in_user, only: [:edit, :update, :destroy]
 
 
   def index
     @posts = Post.all
+    @likes = hienthipost.take(4)
   end  
   def new
     @post = Post.new
   end  
   def create
     @post = current_user.posts.build(post_params)
-    if @post.save!
+    if @post.save
       flash[:success] = "Post Created!"
       redirect_to root_url
     else
-      flash[:danger] = "FAIL - Please read message error !"
+      
+      render :new
     end
   end
   def show
     @comment = @post.comments.build
-    @comments = @post.comments.paginate(page: params[:page])
+    @comments = @post.comments.order_by_time.paginate(page: params[:page])
+    if logged_in?
+     @follow = current_user.follows.find_by post_id: @post.id
+     @follows = @post.follows
+    end
 
   end 
 
@@ -59,6 +65,7 @@ class PostsController < ApplicationController
   def find_post
       @post = Post.find_by id:params[:id] 
       if  @post.nil?
+        flash[:danger] = "post not found"
         redirect_to root_path
       end
    end 

@@ -1,8 +1,28 @@
 <% provide(:title, 'Car Review Post') %>
-<h1>All post car review </h1>
-  <%= link_to image_tag("add.png" , width: "50px")  , new_post_path  %>
-<ul class="posts">
-		<%= render @posts %>
-</ul>
+<%= link_to image_tag("add.png" , width: "50px")  , new_post_path  %>	
+	<h1>All post car review </h1>
+	<div style = "width: 100%">
+		<div style  = "float: left; width: 65%;">				  
+			<ul class="posts">
+				<%= render @posts %>
+			</ul>
+
+	</div>
+	<center><h1>Tin Nổi Bật</h1></center>
+  	<% @likes.each do |like| %>
+		<% post = Post.find_by id: like.first %>
+		<% if post.accepted? %>
+			<div style = "float:right; width: 30%;">
+			  <h1><%= link_to post.title, post %></h1>
+				  <%=link_to (image_tag post.display_image if post.image.attached?), post_path(post) %> 
+			  <hr class="omb_hrOr">
+			 </div>
+		<% end %>
+	<% end %>	
+
+
+
+
+
 
 

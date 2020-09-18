@@ -1,5 +1,7 @@
-<%= form_for(@registration) do |f| %>
+<div class = "container" >
+	<%= form_for(@registration) do |f| %>
 	<div class="field">
+		
 		<p>Họ và Tên
 			<%= f.text_field :fullname, placeholder: "họ và tên" %>
 		</p>
@@ -15,5 +17,7 @@
 		<%= f.select :car_id, options_for_cars, :prompt => 'Select One' %>
 	</div>
 	<%= f.hidden_field :registrated_id, value: @registrated.id %>
+
 		<%= f.submit "đăng ký", class: " btn-primary" %>
-<% end %>
+	<% end %>
+</div>

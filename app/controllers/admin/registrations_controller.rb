@@ -1,4 +1,5 @@
 class Admin::RegistrationsController < ApplicationController
+
 	def destroy
 	 	@registration = Registration.find_by id: params[:id]
 	 	respond_to do |format|
@@ -7,4 +8,6 @@ class Admin::RegistrationsController < ApplicationController
 			format.js
 		end
 	end	
+	
+
 end	

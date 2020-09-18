@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-
 	include SessionsHelper
+	include PostsHelper
 	private
 # Confirms a logged-in user.
 	def logged_in_user

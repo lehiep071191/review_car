@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
 				format.js
 			end
 		end	
+
 	end
 
 	def show
@@ -53,8 +54,8 @@ class CommentsController < ApplicationController
 
 	def comment_ajax
 		respond_to do |format|
-				format.html { redirect_to @comment.post }
-				format.js
-			end
+			format.html { redirect_to @comment.post }
+			format.js
+		end
 	end 
 end	
