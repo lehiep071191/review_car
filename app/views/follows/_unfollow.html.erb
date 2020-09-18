@@ -1,3 +1,0 @@
-<%= form_for(current_user.follows.find_by(post_id: @post.id),html: { method: :delete }) do |f| %>
-	<%= f.submit "Dislike", class: "btn btn-primary" %>
-<% end %>

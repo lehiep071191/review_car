@@ -36,14 +36,14 @@ class Admin::PostsController < ApplicationController
   def destroy
       respond_to do |format|
         @post.destroy
-        format.html { redirect_to admin_posts_path(@post) }
         format.js
+        format.html { redirect_to admin_posts_path(@post) }
       end
   end
 
   private
   def post_params
-    params.require(:post).permit(:content, :image, :title, :status)
+    params.require(:post).permit(:content, :image, :title, :status, :brand)
   end
 
   def find_post

@@ -14,19 +14,20 @@ class FollowsController < ApplicationController
 		@follow.save!
 			respond_to do |format|
 			format.js	
-			format.html {redirect_to post_path(@follow.post)}
+			format.html {redirect_to @follow.post}
 		  	# format.html { redirect_to post_path(follow_params[:post_id]) }
 		end
 		# redirect_to post_path(@follow.post)
 		# redirect_to post_path(follow_params[:post_id])
 	end
 	def destroy
+		@post = @follow.post
 		@follow.destroy!
 		# redirect_to (current_user.follows)
 		respond_to do |format|
 			format.js
-			redirect_to (@follow.post)
-			# format.html { redirect_to (@follow.post) }
+			# redirect_to (@follow.post)
+			format.html { redirect_to (@follow.post) }
 		end	
 		
 	end	

@@ -1,6 +1,6 @@
 <% if post.accepted?|| current_user.admin? %>
 
- <tr id = "post_ajax">	
+ <tr id = "post-ajax">	
 
 	<td class = "tableuser">
  		<p class = "useravatar">
@@ -8,7 +8,7 @@
 			<span class= "user"><%= link_to post.user.name, post.user %></span>
 		</p>
 	</td>
-	<td class = "tablecheck">
+	<td class = "td">
 		<p class= "mtop">
 			<%= post.title %>
 		</p>	
@@ -23,7 +23,7 @@
 	<td class = "tablesee">
 		<% if logged_in? %>
 			<% if current_user.current_user?(post.user) || current_user.admin? %>
-					<%= link_to "delete", admin_post_path(post), method: :delete,data: { confirm: "You sure?" } %>
+					<%= link_to "delete", admin_post_path(post), method: :delete, data: { confirm: "You sure?", reomte: true }  %>
 			<% end %> 
 		<% end %>
 	</td>

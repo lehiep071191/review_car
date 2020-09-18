@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 	 before_action :find_post, only: [:show, :edit, :update, :destroy] 
-   before_action :logged_in_user, only: [:edit, :update, :destroy]
+   before_action :logged_in_user, only: [:new, :edit, :update, :destroy]
 
 
   def index
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:content, :image, :title, :name, :video)
+    params.require(:post).permit(:content, :image, :title, :name, :video, :brand)
   end
 
   def logged_in_user

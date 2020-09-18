@@ -1,14 +1,20 @@
 <%= form_for([:admin, @post]) do |f| %>
-	<div >
+	<div class = "container">
 		<p >
+			Tiêu đề:
 			<%= f.text_field :title,placeholder: "Title" ,class: "form-control" %>
 		</p>
 		<p>
+			Nội dung:
 			<%= f.cktext_area :content, placeholder: "Compose new micropost..." %>
 		</p>
 		<span class="image">
 			<%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
 		</span>	
+		<p style = "margin-top: 50px">
+			Hãng xe muốn review:
+			<%= f.select :brand, Post.brands.keys, prom: "select1" %>
+		</p>
 		<div>	
 			
 		</div>

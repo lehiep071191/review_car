@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_041353) do
+ActiveRecord::Schema.define(version: 2020_09_19_015330) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -82,14 +82,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_041353) do
     t.string "title"
     t.integer "status", default: 0, null: false
     t.string "video"
-  end
-
-  create_table "registrateds", force: :cascade do |t|
-    t.date "time_registrated"
-    t.string "place"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "title"
+    t.integer "brand"
   end
 
   create_table "registrateds", force: :cascade do |t|
@@ -109,6 +102,14 @@ ActiveRecord::Schema.define(version: 2020_09_10_041353) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "fullname"
     t.integer "drive_lisence"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "subcomments", force: :cascade do |t|

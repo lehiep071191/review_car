@@ -1,5 +1,6 @@
-
-<%= form_for(@post.follows.build) do |f| %>
+<div id = "bt-image">
+<%= form_for(@post.follows.build, remote: true) do |f| %>
 	<div><%= f.hidden_field :post_id, value: @post.id %></div>
-	<%= f.submit "Like", class: "btn btn-primary" %>
+	<%= image_submit_tag("likes.png")%>
 <% end %>
+</div>

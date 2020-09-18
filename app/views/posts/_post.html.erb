@@ -8,10 +8,10 @@
               <img style="margin:5px" src="https://www.flaticon.com/svg/static/icons/svg/260/260421.svg" width="20" height="20" alt="Instagram">
          <% end %>  
         <div style = "width:100%">
-          <div style = "float: left; width: 30%;"> 
+          <div style = "float: left; width: 40%;"> 
             <%=link_to (image_tag post.display_image if post.image.attached?), post_path(post) %>
           </div>  
-          <div style = "float:left; width :67%">
+          <div style = "float:left; width :57%">
             <p style = "font-size: 30px;"><b><%= link_to post.title, post %></b></p>
 
             <%=truncate(post.content, :length => 100, :omission => "" , :escape => false) %>
