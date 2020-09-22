@@ -32,8 +32,8 @@ class Admin::CarsController < ApplicationController
   def destroy
      respond_to do |format|
         @car.destroy
-        format.html { redirect_to admin_cars_path(@car) }
         format.js
+        format.html { redirect_to admin_cars_path }
       end	
   end    
   private 

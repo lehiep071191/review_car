@@ -14,11 +14,13 @@ Rails.application.routes.draw do
 
 
   resources :users
-  resources :posts
+  resources :posts do
+    resources :reports, only: [:new, :create]
+  end
   resources :registrations
   resources :registrateds
-  resources :brands
 
+  resources :brands, only: [:index]
 
   resources :comments do
     resources :subcomments
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
     resources :cars
     resources :registrateds
     resources :registrations
+    resources :reports, only: [:index, :show, :destroy]
   end
   resources :follows, only: [:create, :destroy]
 

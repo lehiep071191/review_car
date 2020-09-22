@@ -3,7 +3,7 @@ class Post < ApplicationRecord
 	belongs_to :user
 	has_many :follows, dependent: :destroy
 	has_many :comments, dependent: :destroy
-	# has_many :followers, through: :follows, foreign_key: :user_id, class_name: Follow.name
+	has_many :reports, dependent: :destroy
 	has_one_attached :image
 	scope :order_by_time,->{ order(created_at: :desc) }
 	validates :user_id, presence: true
@@ -15,8 +15,8 @@ class Post < ApplicationRecord
 									{ less_than: 5.megabytes,
 										message: "should be less than 5MB" }, presence: true
 	enum status: [:rejected, :accepted]	
-	enum brand: [:other, :mercedes, :ferrari, :lamborghini, :porsche, :audi, :bmw]								
 
+	enum brand: [:other, :mercedes, :ferrari, :lamborghini, :porsche, :audi, :bmw]								
 
 	def feed_comment
 		self.comments

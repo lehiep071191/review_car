@@ -23,6 +23,9 @@
             <%= link_to "delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
             <%= link_to "| edit" , edit_post_path(@post) %>
            <% end %> 
+          <span id = "report-ajax">
+          	<%= link_to "report", new_post_report_path(@post), remote: true if @report.nil? %>  
+          </span>
         <% end %>
 	<% if logged_in? %>
 		<span>

@@ -27,7 +27,7 @@
 		<%= link_to "edit",edit_admin_car_path(car) %>
 	</td>
 	<td class = "tablesee">
-					<%= link_to "delete", admin_car_path(car), method: :delete,data: { confirm: "You sure?" } %>
+					<%= link_to "delete", admin_car_path(car), method: :delete,data: { confirm: "You sure?", remote: true } %>
 	</td>
 
 		

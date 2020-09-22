@@ -1,0 +1,7 @@
+	<%= form_for([:post, @report], remote: true) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		<%= f.text_area :content, placeholder: "reports" %>
+		<%= f.hidden_field :post_id, value: @report.post_id %>
+		<%= f.submit "report post", class: "btn btn-primary" %>
+	<% end %>
+ 

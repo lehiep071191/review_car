@@ -1,0 +1,7 @@
+<div id = "bt-image">
+<%= form_for(@post.reports.build, remote: true) do |f| %>
+	<%= f.text_area :content, placeholder: "reports" %>
+	<div><%= f.hidden_field :post_id, value: @post.id %></div>
+	<%= image_submit_tag("likes.png")%>
+<% end %>
+</div>

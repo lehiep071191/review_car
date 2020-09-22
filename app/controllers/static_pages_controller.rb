@@ -7,5 +7,4 @@ class StaticPagesController < ApplicationController
   	hienthipost
   end
 
-
 end
