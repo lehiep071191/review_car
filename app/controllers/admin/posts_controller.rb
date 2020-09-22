@@ -43,7 +43,7 @@ class Admin::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:content, :image, :title, :status)
+    params.require(:post).permit(:content, :image, :title, :status, :brand)
   end
 
   def find_post

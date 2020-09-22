@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   root 'static_pages#home'
   get'/signup', to: 'users#new'
+  get '/brandshow', to: 'brands#show'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   resources :posts
   resources :registrations
   resources :registrateds
+  resources :brands
+
 
   resources :comments do
     resources :subcomments

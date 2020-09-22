@@ -45,12 +45,12 @@ class User < ApplicationRecord
 		self.posts
 	end
 
-	def follow(post)
-		following << post
-	end
-	def unfollow(post)
-		following.delete(post)
-	end
+	# def follow(post)
+	# 	following << post
+	# end
+	# def unfollow(post)
+	# 	following.delete(post)
+	# end
 	# def following?(post)
 	# 	following.include?(post)
 	# end
