@@ -9,16 +9,14 @@
 	</td>
 	<td class = "td">
 		<p class= "mtop">
-			<%= post.title %>
+			<%= link_to truncate(post.title, length: 35), admin_post_path(post) %>
 		</p>	
 	</td>
 	<td >
 		Posted <%= time_ago_in_words(post.created_at) %> ago.
 	</td>
 		
-	<td class = "tablesee" >	
-		<%= link_to "see",admin_post_path(post)%>
-	</td>
+
 	<td class = "tablesee">
 		<% if logged_in? %>
 			<% if current_user.current_user?(post.user) || current_user.admin? %>
@@ -26,17 +24,8 @@
 			<% end %> 
 		<% end %>
 	</td>
-	<td class = "tablecheck">
-		<p class = "useravatar">
-		<% if current_user.admin? %>	
-			<div class="field">
-				<%= form_for ([:admin, post]) do |f| %>	
-				  <%= f.select :status, Post.statuses.keys %>
-				<br /><%= f.submit "allows", class: "mtop" %> 
-				<% end %>  
-			</div>
-		<% end %>
-	</p>
+	<td class = "pdpost1"  >
+		<h3><%= post.status %></h3>
 	</td>	
  </tr>		
 

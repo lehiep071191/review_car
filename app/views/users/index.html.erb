@@ -1,11 +1,27 @@
 <% provide(:title, 'All users') %>
-<div class="container" >
-<h1>All users</h1>
-
-<ul class="users">
-	<% @users.each do |user| %>
-	<%= render user %>
-	<% end %>
-</ul>
+<%= render 'layouts/admin_sidebar' %>
+<div id="content">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
+            </a>
+          </li>
+          <li><h1>Trang quản lý tài khoản</h1></li>
+         
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+    	<ul class="posts">	
+    		<%= will_paginate %>
+		<ul class="users">
+			<% @users.each do |user| %>
+			<%= render user %>
+			<% end %>
+		</ul>
+			<%= will_paginate %>
+		</ul>
+	</div>
 </div>
-<%= will_paginate %>

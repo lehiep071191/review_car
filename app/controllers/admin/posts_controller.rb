@@ -4,7 +4,13 @@ class Admin::PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all.order_by_time
+    if params[:post_type] == "init"
+         @posts = Post.init.order_by_time
+    elsif params[:post_type] == "rejected"
+         @posts = Post.rejected.order_by_time
+    elsif params[:post_type] == "accepted"
+         @posts = Post.accepted.order_by_time
+    end                 
   end  
   def new
     @post = Post.new
@@ -28,7 +34,7 @@ class Admin::PostsController < ApplicationController
   def update
     if @post.update(post_params)
       flash[:success] = "updated"
-      redirect_to admin_posts_path(@post)
+      redirect_to admin_posts_path(post_type: post_params[:status])
     else
       render 'edit'
     end
