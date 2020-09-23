@@ -1,7 +1,15 @@
 <div class = "container" >
-<%= form_for (@post) do |f| %>
+	<%= form_for (@post) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>	
+		<div class="sub_address">
+		  <%= f.fields_for(:hastags) do |builder| %>
+				<%= builder.label :content, "hastag" %>
+				<%= builder.text_field :content, class: "form-control" %>
+				<%= builder.hidden_field :_destroy, class: "input-group mb-3" %>
+		  <% end %>
+		</div>
 		<p >
+			<br/>
 			<%= f.text_field :title,placeholder: "Title" ,class: "form-control" %>
 		</p>
 		<p>
@@ -11,14 +19,13 @@
 		<p>
 			<%= f.select :brand, Post.brands.keys, prom: "select1" %>
 				
-		</p>	
+		</p>
+
 		<p >
 			<%= f.submit "Post", class: "btn btn-primary btn-lg btn-block" %>	
 		</p>
 
-<% end %>	
+	<% end %>	
 </div>
-
-
 
 

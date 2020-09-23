@@ -1,20 +1,30 @@
 <% provide(:title, @post.title) %>
-<div class = "container"> 
+<div class = "container rates"> 
 
 	
 	<div class="row">
 
 		<aside class="col-md-8">
-
+		
 			<section>
 				<p style = "font-size: 40px;">
 					<b><%= @post.title %></b> 
 				</h2>
+				<br />
 			
 				<p>
-					<%= Time.now %>
+				<h4  style = " font-weight: bold;">
+					 <%= average_rating %> <img src ="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/1077px-Star_icon_stylized.svg.png" style="width: 20px;  "> | <%= @post.ratings.count %> votes. <br />
+					 
+				</h4>
+
+					<%= Time.now %><br />
+
+				<h4 style = "text-align: center">	
 					<%= @post.content.html_safe %>
-				</h4>			
+				</h4>	
+				</p>	
+							
 			</section>
 			Người viết: <span class="user"><%= link_to @post.user.name, @post.user %></span>
 		</aside>	
@@ -25,9 +35,17 @@
             <%= link_to "| edit" , edit_post_path(@post) %>
            <% end %> 
           <span id = "report-ajax">
-          	<%= link_to "report", new_post_report_path(@post), remote: true if @report.nil? %>  
+          	<%= link_to "report", new_post_report_path(@post), remote: true if @report.nil? %> | 
           </span>
-        <% end %>
+          <span id = "rating-ajax" >
+
+          	<% if @rating.nil? %>
+          		<%= link_to "Rating", new_post_rating_path(@post), remote: true %>
+          	<% else %>
+          		<%= link_to "do it again Rating", edit_post_rating_path(@rating.post, @rating), remote: true %>	
+          	<% end %>	
+          </span>	
+      <% end %>
 	<% if logged_in? %>
 		<span>
 			

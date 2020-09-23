@@ -3,8 +3,9 @@ class User < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	has_many :follows, dependent: :destroy
 	has_many :reports, dependent: :destroy
-	has_many :registrations
+	has_many :registrations, dependent: :destroy
 	has_many :car_registrateds, through: :registrations
+	has_many :ratings, dependent: :destroy
 	# has_many :followeds, through: :follows, foreign_key: :post_id, class_name: Follow.name		
 	attr_accessor :remember_token
 	before_save :downcase_email

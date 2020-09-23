@@ -1,0 +1,5 @@
+<%= f.fields_for :hastags do |builder| %>
+	<%= builder.label :content, "hastag" %>
+	<%= builder.text_field :content, class: "form-control" %>
+	<%= builder.hidden_field :_destroy, class: "input-group mb-3" %>
+<% end %>

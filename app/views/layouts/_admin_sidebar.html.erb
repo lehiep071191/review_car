@@ -5,6 +5,7 @@
       <a href="/admin/home">My App</a>
     </header>
     <ul class="nav">
+
       <li>
         <a href="/admin/cars">
           <i class="zmdi zmdi-view-dashboard"></i> Quản Lý Kho xe
@@ -40,6 +41,26 @@
         <a href="/admin/reports">
           <i class="zmdi zmdi-info-outline"></i> Quản lý reports
         </a>
+      </li>
+       <li>
+        <a href="#">
+          <i class="zmdi zmdi-info-outline"></i>
+          Tìm kiếm thông tin
+        </a>
+      </li>
+      <li>
+        <i class="zmdi zmdi-info-outline"></i>
+          <div style = "margin-top: -11px; ">
+        <%= form_tag(admin_search_page_path, :method => "get",   
+            class: 'navbar-form navbar-left') do %>  
+            <div class="input-group">  
+              <%= search_field_tag :search, params[:search], placeholder: "Tìm các bài post", class: "form-control" %>  
+              <div class="input-group-btn" style = "margin-top: -2px;">  
+                <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search search-button',:name => nil%>  
+              </div>  
+            </div>  
+        <% end %>
+    </div>
       </li>
     
     </ul>

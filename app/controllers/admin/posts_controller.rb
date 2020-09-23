@@ -4,6 +4,7 @@ class Admin::PostsController < ApplicationController
 
 
   def index
+   
     if params[:post_type] == "init"
          @posts = Post.init.order_by_time
     elsif params[:post_type] == "rejected"
@@ -65,4 +66,5 @@ class Admin::PostsController < ApplicationController
       redirect_to root_path
     end
   end
+
 end

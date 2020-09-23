@@ -1,10 +1,11 @@
 
 
-<div id="viewport">
-<%= render 'layouts/admin_sidebar' %>
-  </div>
+<div id="viewport" >
+    <%= render 'layouts/admin_sidebar' %>
+</div>
+  
   <!-- Content -->
-  <div id="content">
+  <div id="content bgadmin">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <ul class="nav navbar-nav navbar-right">
@@ -12,16 +13,29 @@
             <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
             </a>
           </li>
-          <li><a href="#">Test User</a></li>
+          <li><h1>Thông số chung của trang</h1></li>
         </ul>
-      </div>
-    </nav>
-    <div class="container-fluid">
-      <h1>Trang dành riêng cho quản trị viên</h1>
-      <div>
-          <%= image_tag("https://vnn-imgs-f.vgcloud.vn/2019/03/19/18/o-to-moi-4.jpg", width: "80%") %>
-      </div>
+
+     </div>
+
+    </nav> 
+    <div class="container-fluid ">
+      <h1>Số lượng bài viết mới khởi tạo trong 7 ngày gần nhất: <%= Post.init.where("created_at >=?", 7.day.ago).count  %></h1>
+      <hr class="omb_hrOr">
+      <h1>Số lượng bài viết đã được duyệt trong 7 ngày gần nhất: <%= Post.accepted.where("created_at >=?", 7.day.ago).count  %></h1>
+      <hr class="omb_hrOr">
+      <h1>Số lượng bài viết bị tắt hiển thị trong 7 ngày gần nhất: <%= Post.rejected.where("created_at >=?", 7.day.ago).count  %></h1>
+      <hr class="omb_hrOr">
+       <h1>Tổng số bài viết trên hệ thống: <%= Post.all.count %></h1>
+      <hr class="omb_hrOr">
+      <h1>Số lượng tài khoản được tạo mới trong 7 ngày gần nhất: <%= User.where("created_at >=?", 1.month.ago).count %></h1>
+      <hr class="omb_hrOr">
+       <h1>Tổng số tài khoản trên hệ thống: <%= User.all.count %></h1>
+      <hr class="omb_hrOr">
+       <h1>Số lượng người đăng ký lái thử: <%= Registration.all.count %>
+      <hr class="omb_hrOr">
     </div>
   </div>
 </div>
+
 

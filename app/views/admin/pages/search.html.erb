@@ -1,0 +1,9 @@
+<div class = "container" style = "margin-top: 50px;" >
+<h1>Search Result</h1>
+<br />
+<br />
+<br />  
+    <% @result_posts.each do |post| %>  
+       <h4><%= link_to post.title, admin_post_path(post) %><br /></h4>
+    <% end %>
+</div>

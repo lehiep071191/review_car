@@ -34,11 +34,13 @@
       <%= javascript_include_tag Ckeditor.cdn_url %>
       <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" /> 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+      <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
+
   
   </head>
   <body id = "body-prj">     
     <%= render "layouts/header" %>   
-    <div class="" >
+    <div class="" id = "content" >
         <% flash.each do |message_type, message| %>
           <div class="alert alert-<%= message_type %>">
             <%= message %>  

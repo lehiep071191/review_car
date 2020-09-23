@@ -11,12 +11,15 @@ Rails.application.routes.draw do
 
   #serach furture
   get '/search', to: 'pages#search', as: 'search_page' 
+  get '/admin/search', to: 'admin/pages#search', as: 'admin_search_page'
 
 
   resources :users
   resources :posts do
     resources :reports, only: [:new, :create]
+    resources :ratings
   end
+
   resources :registrations
   resources :registrateds
 
@@ -35,6 +38,7 @@ Rails.application.routes.draw do
     resources :reports, only: [:index, :show, :destroy]
   end
   resources :follows, only: [:create, :destroy]
+  resources :hastags
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

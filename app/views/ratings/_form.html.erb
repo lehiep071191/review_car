@@ -1,0 +1,20 @@
+<div style = " float: right;" >
+	<%= form_for([:post, @rating], remote: true) do |f| %>	
+			<%= f.radio_button :rate, '5', class: 'star star-5',  id: "star-5" %>
+			<label class="star star-5" for="star-5"></label>
+			<%= f.radio_button :rate, '4', class: 'star star-4',  id: "star-4" %>
+			<label class="star star-4" for="star-4"></label>
+			<%= f.radio_button :rate, '3', class: 'star star-3',  id: "star-3" %>
+			<label class="star star-3" for="star-3"></label>
+			<%= f.radio_button :rate, '2', class: 'star star-2',  id: "star-2" %>
+			 <label class="star star-2" for="star-2"></label>
+			<%= f.radio_button :rate, '1', class: 'star star-1', id: "star-1" %> 
+			<label class="star star-1" for="star-1"></label>
+		<center><p style = "width:50px">
+			<%= f.submit "rate", class: "btn " %>
+		</p></center>
+	<% end %>
+</div>
+
+
+   
