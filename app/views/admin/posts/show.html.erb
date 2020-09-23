@@ -1,16 +1,16 @@
 
 <% provide(:title, @post.title) %>
-<span class="user"><%= link_to @post.user.name, @post.user %></span>
+<%= render 'layouts/admin_sidebar' %>
+<div class = "container" >
+
 <div class="row">
 	<aside class="col-md-8">
 		<section>
 			
-			<h1>
+			<h2>
 				<%= @post.title %>
-			</h1>
-			<h1>
-				<%= image_tag @post.display_image if @post.image.attached? %>
-			</h1>
+			</h2>
+	
 			<h4>
 				<%= @post.content.html_safe %>
 			</h4>
@@ -18,7 +18,7 @@
 		</section>
 
 	</aside>
-	<h2><%= link_to "edit",edit_admin_post_path%></h2> |
+	|
 	<% if current_user.admin? %>	
 		<div class="field">
 			<%= form_for ([:admin, @post]) do |f| %>	
@@ -30,4 +30,5 @@
 	<% end %>	
 	<a href="#" class="cd-top">Back To Top</a>
 </div>	
+</div>
 

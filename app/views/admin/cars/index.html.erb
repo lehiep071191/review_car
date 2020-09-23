@@ -1,10 +1,22 @@
-<div class = "container" >
-<h1>All cars</h1>
-<p>
-	<%= link_to "tạo bài viết mới", new_admin_car_path %>
-</p>
+<% provide(:title, 'All cars') %>
+<%= render 'layouts/admin_sidebar' %>	
 
-<ul class="posts">	
+ <div id="content">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
+            </a>
+          </li>
+          <h1><li>Quản lý kho xe</li></h1>
+          
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+    	<ul class="posts">	
+    		<%= link_to "thêm vào xe mới", new_admin_car_path %>
 	<table>
 		 <tr>
  	<th>
@@ -31,6 +43,6 @@
  	</th>
   </tr>	
 		<%= render @cars %>
-	</table>		
-</ul>
-</div>
+	</table>
+    </div>
+ 

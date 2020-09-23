@@ -14,21 +14,19 @@
 	Đơn Đăng Ký Lái Thử: 
 <br />	
   <br />Địa Điểm: <%= registration.car_registrated.registrated.place %>
- <br />Thời Gian: <%= registration.car_registrated.registrated.place %>
+ <br />Thời Gian: <%= registration.car_registrated.registrated.time_registrated%>
 
 </h1>
-<h4 class = "tablecheck">
-	Tên người đăng ký
-	<%= registration.fullname %>
+<h4>
+	Tên người đăng ký: <%= registration.fullname %>
 </h4>
 <h4>
-	<%= registration.drive_lisence %>
+	Hạng bằng lái: <%= registration.drive_lisence %>
 </h4>
 <h4>
-	<%= registration.phone %>
+	Điện thoại: <%= registration.phone %>
 </h4>
 
-<h4>Xe Sử dụng: 
-	<%= registration.car_registrated.car.name %>
-	
+<h4>
+	Xe Sử dụng: <%= registration.car_registrated.car.name %>
 </h4>

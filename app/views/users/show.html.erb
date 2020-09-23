@@ -6,9 +6,11 @@
 				<%= gravatar_for @user %>
 				<%= @user.name %>
 			</h1>
+		<div style = "margin-top: 100px;">	
 		<% if @user.registrations.any? %>	
 			<%= render @registrations %>
-		<% end %>	
+		<% end %>
+		</div>	
 		</section>
 
 		<section class="stats">

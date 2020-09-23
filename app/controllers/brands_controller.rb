@@ -12,8 +12,10 @@ class BrandsController < ApplicationController
 		elsif params[:brand_type] == "audi"
 			@brands = Post.audi
 		elsif params[:brand_type] == "bmw"
-			@brands = Post.bmw
-		else 	
+			@brands = Post.bmw 	
+		elsif params[:brand_type] == "volkswagen"
+			@brands = Post.volkswagen
+		else 
 			@brands = Post.other	
 		end				
 	end
